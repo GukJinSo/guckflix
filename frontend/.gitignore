@@ -11,7 +11,7 @@
 # production
 /build
 
-# testing
+# test
 
 # eclipse metadata
 .metadata
