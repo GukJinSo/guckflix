@@ -1,5 +1,9 @@
 import axiosCustom from './axiosCustom';
 
+export const category = {
+  movie: 'movie',
+};
+
 export const movieType = {
   upcoming: 'upcoming',
   popular: 'popular',
@@ -12,7 +16,7 @@ export const movieType = {
 // /movie/{movie_id}/videos
 
 const tmdbApi = {
-  getMovieList: (type, params) => {
+  getMoviesList: (type, params) => {
     const url = 'movie/' + movieType[type];
     return axiosCustom.get(url, params);
   },

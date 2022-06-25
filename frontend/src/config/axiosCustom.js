@@ -1,8 +1,8 @@
-import { Axios } from 'axios';
+import axios from 'axios';
 import apiConfig from './apiConfig';
 import queryString from 'query-string';
 
-const axiosCustom = Axios.create({
+const axiosCustom = axios.create({
   baseURL: apiConfig.baseUrl,
   headers: {
     'Content-type': 'application/json',
