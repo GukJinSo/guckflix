@@ -16,6 +16,8 @@
 # eclipse metadata
 .metadata
 
+apiConfig
+
 # properties
 *.properties
 
