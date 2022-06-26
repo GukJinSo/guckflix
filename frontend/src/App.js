@@ -1,23 +1,29 @@
-import { useEffect } from 'react';
-import axiosCustom from './config/axiosCustom';
+import { useEffect, useState } from 'react';
 import tmdbApi, { movieType } from './config/tmdbApi';
-import axios from 'axios';
-import apiConfig from './config/apiConfig';
+import HeroSlide from './component/HeroSlide';
+import './App.css';
 
 function App() {
+  const [movieItems, setMovieItems] = useState([]);
+
   useEffect(() => {
     const getList = async () => {
       const params = {};
-
       const response = await tmdbApi.getMoviesList(movieType.popular, {
         params,
       });
-      console.log(response);
+      setMovieItems(response.data.results.slice(1, 4));
     };
     getList();
   }, []);
 
-  return <div className="App">App</div>;
+  return (
+    <div className="App">
+      {movieItems.map((e, i) => {
+        return <HeroSlide items={e} index={i}></HeroSlide>;
+      })}
+    </div>
+  );
 }
 
 export default App;
