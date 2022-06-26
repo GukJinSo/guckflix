@@ -1,4 +1,7 @@
-body {
+body,
+.body,
+.app,
+html {
   margin: 0;
   box-sizing: border-box;
   padding: 0;
@@ -9,10 +12,30 @@ body {
   opacity: 0.8;
 }
 
+.header__logo {
+  text-align-last: center;
+}
+
 .heroSlide {
   display: none;
 }
 
 .active {
   display: block;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr;
+}
+
+.header__items {
+  display: flex;
+  flex-flow: row;
+  justify-content: end;
+}
+
+.header__itmes__li {
+  list-style-type: none;
+  padding: 0 2rem;
 }
