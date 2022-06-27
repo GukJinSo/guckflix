@@ -21,9 +21,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {movieItems.map((e, i) => {
-        return <HeroSlide items={e} index={i}></HeroSlide>;
-      })}
+      <HeroSlide items={movieItems} />
     </div>
   );
 }

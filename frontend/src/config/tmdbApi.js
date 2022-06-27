@@ -11,10 +11,6 @@ export const movieType = {
   latest: 'latest',
 };
 
-// Get Videos
-// GET
-// /movie/{movie_id}/videos
-
 const tmdbApi = {
   getMoviesList: (type, params) => {
     const url = 'movie/' + movieType[type];

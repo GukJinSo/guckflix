@@ -1,22 +1,36 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../img/header_logo.png';
+
 const Header = () => {
+  // Nav 요소
   const headerNav = [
     { text: 'Home', path: '/' },
     { text: 'Movie', path: '/movie' },
     { text: 'TV', path: '/tv' },
   ];
 
+  // 헤더 축소 애니메이션
+  const header = useRef(null);
+  const shrinkHeader = () => {
+    if (window.scrollY > 100) {
+      header.current.classList.add('shrinkHeader');
+    } else {
+      header.current.classList.remove('shrinkHeader');
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', shrinkHeader);
+    return () => {
+      window.removeEventListener('scroll', shrinkHeader);
+    };
+  }, []);
+
   return (
-    <div className="header">
+    <div className="header" ref={header}>
       <div className="header__logo">
-        <img
-          src={logo}
-          className="header__logo__img"
-          alt=""
-          style={{ height: '100%' }}
-        />
+        <img src={logo} className="header__logo__img" alt="" />
       </div>
       <ul className="header__items">
         {headerNav.map((e) => {
