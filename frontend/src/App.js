@@ -1,27 +1,16 @@
-import { useEffect, useState } from 'react';
-import tmdbApi, { movieType } from './config/tmdbApi';
-import HeroSlide from './component/HeroSlide';
 import './App.css';
 import Header from './component/Header';
+import { Route, Routes } from 'react-router-dom';
+import Home from './page/Home';
 
 function App() {
-  const [movieItems, setMovieItems] = useState([]);
-
-  useEffect(() => {
-    const getList = async () => {
-      const params = {};
-      const response = await tmdbApi.getMoviesList(movieType.popular, {
-        params,
-      });
-      setMovieItems(response.data.results.slice(1, 4));
-    };
-    getList();
-  }, []);
-
   return (
     <div className="App">
       <Header />
-      <HeroSlide items={movieItems} />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/movie" exact={true}></Route>
+      </Routes>
     </div>
   );
 }
