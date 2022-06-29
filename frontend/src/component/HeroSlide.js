@@ -4,7 +4,6 @@ import '../App.css';
 
 const HeroSlideItems = ({ movieItems }) => {
   // 슬라이더 액션
-  let heroSlide = [];
 
   let isPressed = true;
   let clientMouseX = 0;
@@ -14,20 +13,19 @@ const HeroSlideItems = ({ movieItems }) => {
   };
 
   const sliderAction = () => {
-    heroSlide = Array.from(document.getElementsByClassName('heroSlide__items'));
-    if (heroSlide[0].style.transform === 'translateX(0px)') {
-      heroSlide[0].style.transform = 'translateX(-100vw)';
-    } else if (heroSlide[0].style.transform === 'translateX(100vw)') {
-      heroSlide[0].style.transform = 'translateX(-200vw)';
-    } else {
-      heroSlide[0].style.transform = 'translateX(0px)';
-    }
+    const heroSlide = Array.from(
+      document.getElementsByClassName('heroSlide__items'),
+    );
   };
 
   const mouseUpAction = (e) => {
     if (isPressed) {
       if (e.clientX - clientMouseX > 100) {
-        console.log('>101110');
+        console.log('슬라이더 앞으로');
+        sliderAction();
+      }
+      if (clientMouseX - e.clientX > 100) {
+        console.log('슬라이더 뒤로');
         sliderAction();
       }
     }
@@ -49,31 +47,47 @@ const HeroSlideItems = ({ movieItems }) => {
   useEffect(() => {
     if (movieItems) {
     }
-    console.log('rendered');
   }, []);
 
   return (
-    <div className="heroSlide">
-      {movieItems.map((e, i) => (
-        <div className="heroSlide__items">
-          <img
-            src={apiConfig.originalImage(e.backdrop_path)}
-            className="heroSlide__backgroundImage"
-            alt=""
-          />
-          <img
-            src={apiConfig.w500Image(e.poster_path)}
-            className="heroSlide__modalImage"
-            alt=""
-          />
-        </div>
-      ))}
-      <button>Left</button>
-      <button>Right</button>
+    <div style={{ overflow: 'hidden' }}>
+      <div className="heroSlide">
+        {movieItems.map((e, i) => {
+          const backgroundImageURL = apiConfig.originalImage(e.backdrop_path);
+          const posterImageURL = apiConfig.w500Image(e.poster_path);
+          console.log(e);
+          return (
+            <div
+              className="heroSlide__items"
+              style={{
+                backgroundImage: `url(${backgroundImageURL})`,
+              }}
+            >
+              <div className="heroSlide__items__content">
+                <div className="heroSlide__items__content__info">
+                  <div className="heroSlide__items__content__info__title">
+                    {e.title}
+                  </div>
+                  <div className="heroSlide__items__content__info__overview">
+                    {e.overview}
+                  </div>
+                </div>
+                <img
+                  className="heroSlide__items__content__w500img"
+                  src={`${posterImageURL}`}
+                  alt=""
+                />
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
+/*
 
+*/
 const HeroSlide = ({ movieItems }) => {
   useEffect(() => {}, []);
 
