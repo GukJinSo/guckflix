@@ -1,3 +1,34 @@
+@font-face {
+  font-family: 'Noto Sans KR';
+  src: url('./font/NotoSansKR-Black.otf') format('truetype');
+  font-weight: 900;
+}
+@font-face {
+  font-family: 'Noto Sans KR';
+  src: url('./font/NotoSansKR-Bold.otf') format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Noto Sans KR';
+  src: url('./font/NotoSansKR-Medium.otf') format('truetype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Noto Sans KR';
+  src: url('./font/NotoSansKR-Regular.otf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Noto Sans KR';
+  src: url('./font/NotoSansKR-Light.otf') format('truetype');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Noto Sans KR';
+  src: url('./font/NotoSansKR-Thin.otf') format('truetype');
+  font-weight: 100;
+}
+
 body,
 .body,
 .app,
@@ -5,112 +36,5 @@ html {
   margin: 0;
   box-sizing: border-box;
   padding: 0;
-}
-
-.heroSlide {
-  width: 300vw;
-  display: flex;
-  flex-flow: row;
-  overflow: hidden;
-  transition: transform 0.5s ease;
-}
-
-.heroSlide__items {
-  background-size: cover;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1;
-  -webkit-user-drag: none;
-}
-
-.heroSlide__items__content {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-}
-.active {
-  display: block;
-}
-
-.heroSlide__items__content__info {
-  width: 40%;
-}
-.heroSlide__items__content__w500img {
-  position: relative;
-  z-index: 10;
-  height: 60%;
-  transform: scale(1);
-  transition: transform 0.3s ease-in-out;
-}
-.heroSlide__items__content__w500img:hover {
-  transform: scale(1.1);
-  transition: transform 0.3s ease-in-out;
-}
-
-.header {
-  z-index: 100;
-  display: grid;
-  grid-template-columns: 0.5fr 2fr;
-  align-items: center;
-  position: fixed;
-  width: 100vw;
-  opacity: 1;
-  height: 100px;
-  transition: 0.2s ease;
-}
-
-.shrinkHeader {
-  background-color: black;
-  height: 60px;
-  opacity: 0.8;
-  transition: 0.7s ease;
-}
-
-.header__logo {
-  text-align-last: center;
-  height: 38px;
-}
-.header__logo__img {
-  height: inherit;
-}
-
-.header__items {
-  display: flex;
-  flex-flow: row;
-  justify-content: end;
-  gap: 10%;
-  padding: 0 5rem;
-}
-
-.header__itmes__li {
-  list-style-type: none;
-}
-
-.header__itmes__li a:hover {
-  color: red;
-}
-
-.header__itmes__li a {
-  position: relative;
-  transition: width 0.5s ease;
-  text-decoration: none;
-  font-size: large;
-  color: white;
-  font-weight: 800;
-}
-
-.header__itmes__li a:after {
-  position: absolute;
-  content: '';
-  background-color: red;
-  height: 3px;
-  bottom: -5px;
-  left: 50%;
-  width: 0%;
-  transition: 0.4s ease;
-}
-
-.header__itmes__li a:hover:after {
-  left: 0;
-  width: 100%;
+  font-family: 'Noto Sans KR', sans-serif;
 }

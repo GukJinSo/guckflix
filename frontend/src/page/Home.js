@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import HeroSlide from '../component/HeroSlide';
+import HeroSlide from '../component/heroSlide/HeroSlide.js';
 import tmdbApi, { movieType } from '../config/tmdbApi';
 
 const Home = () => {
@@ -13,7 +13,7 @@ const Home = () => {
         params,
       });
       // console.log('async 실행');
-      setMovieItems(response.data.results.slice(1, 4));
+      setMovieItems(response.data.results.slice(1, 7));
     };
     getList();
   }, []);
