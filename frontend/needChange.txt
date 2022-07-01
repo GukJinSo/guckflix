@@ -1,0 +1,3 @@
+#apiconfig cuz of gitignore
+
+youtubeUrl: ' https://www.youtube.com/embed/'
