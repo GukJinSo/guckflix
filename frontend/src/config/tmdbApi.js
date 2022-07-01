@@ -1,7 +1,11 @@
-import axiosCustom from './axiosCustom';
+import axiosCustom from './axiosCustom.js';
 
 export const category = {
   movie: 'movie',
+};
+
+export const videoType = {
+  trailer: 'Trailer',
 };
 
 export const movieType = {
@@ -15,6 +19,10 @@ const tmdbApi = {
   getMoviesList: (type, params) => {
     const url = 'movie/' + movieType[type];
     return axiosCustom.get(url, params);
+  },
+  getVideos: (cate, id) => {
+    const url = category[cate] + '/' + id + '/videos';
+    return axiosCustom.get(url, { params: {} });
   },
 };
 

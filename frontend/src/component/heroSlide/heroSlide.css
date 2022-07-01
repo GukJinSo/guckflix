@@ -2,7 +2,7 @@
   height: 100vh;
   display: flex;
   flex-flow: row;
-  transition: transform 0.5s ease;
+  transition: transform 1s ease;
   /* background img, width embed with inline css in heroSlide.js*/
 }
 
@@ -29,7 +29,7 @@
   font-size: 5vw;
   color: white;
   line-height: 1;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -39,6 +39,7 @@
 }
 
 .heroSlide__items__content__info__overview {
+  margin-bottom: 3rem;
   font-family: 'Noto Sans KR';
   font-weight: 400;
   font-size: 1.5vw;
@@ -56,10 +57,50 @@
   justify-self: center;
   z-index: 10;
   width: 80%;
+  min-width: 200px;
   transform: scale(1);
   transition: transform 0.3s ease-in-out;
 }
 .heroSlide__items__content__w500img:hover {
   transform: scale(1.1);
   transition: transform 0.3s ease-in-out;
+}
+
+.heroSlide__items__content__info__buttonDiv {
+  display: flex;
+  /* justify-content: space-evenly; */
+  gap: 1vw;
+}
+
+.heroSlide__items__content__info__buttonDiv__button {
+  /* width: 10vw; */
+  display: flex;
+  gap: 0.5vw;
+  align-items: center;
+  height: 8vh;
+  border-radius: 8px;
+  padding: 0 1vw;
+  font-family: 'Noto Sans KR';
+  font-size: 1vw;
+  font-weight: 500;
+  cursor: grab;
+  opacity: 1;
+}
+.heroSlide__items__content__info__buttonDiv__button:hover {
+  opacity: 0.8;
+}
+
+.heroSlide__items__content__info__buttonDiv__button:first-child {
+  background-color: white;
+  border: 2px solid black;
+}
+
+.heroSlide__items__content__info__buttonDiv__button:last-child {
+  color: white;
+  background: none;
+  border: 2px solid white;
+}
+
+.material-symbols-outlined {
+  font-size: 2.5vw;
 }
