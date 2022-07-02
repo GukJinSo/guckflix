@@ -1,23 +1,17 @@
 .modal {
   position: relative;
-  /* transform: translate(-50%, -50%); */
   z-index: 100;
 }
 
 .modal div {
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
   display: flex;
-  height: 100vh;
+  height: 100%;
   position: fixed;
   width: 100vw;
   top: 0vh;
   justify-content: center;
   align-items: center;
-  /* transform: translateY(50vh); */
-}
-
-.modal div div {
-  position: relative;
 }
 
 .none {
@@ -29,4 +23,5 @@ iframe {
   position: absolute;
   width: 50vw;
   height: 28.125vw;
+  background-color: black;
 }

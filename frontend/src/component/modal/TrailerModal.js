@@ -5,34 +5,39 @@ import apiConfig from '../../config/apiConfig';
 
 const TrailerModal = ({ item }) => {
   const iframeRef = useRef();
+  const [iframeSrc, setIframeSrc] = useState();
   useEffect(() => {
     const getVideo = async () => {
       const response = await tmdbApi.getVideos(category.movie, item.id);
       // 관련 비디오가 많은 경우 트레일러만 가져오겠다
-      const youtubeUrlKey = response.data.results.filter((e, i) => {
-        if (e.type === videoType.trailer) return e;
+      const youtubeUrlKey = response.data.results.filter((e) => {
+        return e.type === videoType.trailer ? e : null;
       });
       iframeRef.current.src = apiConfig.youtubeUrl + youtubeUrlKey[0].key;
+      setIframeSrc(iframeRef.current.src);
     };
     getVideo();
   }, []);
 
+  const modalRef = useRef();
+
   return (
-    <div className={`modal none`} id={`${item.id}`}>
+    <div className={`modal none`} id={`${item.id}`} ref={modalRef}>
       <div
         onClick={() => {
-          document.getElementById(item.id).classList.add('none');
+          // 다른 곳을 클릭할 경우 꺼짐
+          modalRef.current.classList.add('none');
+          iframeRef.current.src = '';
+          iframeRef.current.src = iframeSrc;
         }}
       >
-        <div>
-          <iframe
-            ref={iframeRef}
-            src=""
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div>
+        <iframe
+          ref={iframeRef}
+          src=""
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
       </div>
     </div>
   );

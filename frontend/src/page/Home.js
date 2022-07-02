@@ -3,7 +3,11 @@ import HeroSlide from '../component/heroSlide/HeroSlide.jsx';
 import tmdbApi, { movieType } from '../config/tmdbApi';
 
 const Home = () => {
-  return <HeroSlide />;
+  return (
+    <div>
+      <HeroSlide />
+    </div>
+  );
 };
 
 export default Home;

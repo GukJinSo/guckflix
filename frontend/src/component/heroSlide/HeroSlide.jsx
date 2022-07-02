@@ -63,18 +63,23 @@ const HeroSlide = () => {
       const response = await tmdbApi.getMoviesList(movieType.popular, {
         params,
       });
-      setMovieItems(response.data.results.slice(1, 7));
+      setMovieItems(response.data.results.slice(0, 10));
     };
     getList();
   }, []);
 
+  const heroSlideRef = useRef();
   // 마우스 액션
   useEffect(() => {
-    window.addEventListener('mouseup', (e) => mouseUpAction(e));
-    window.addEventListener('mousedown', (e) => mouseDownAction(e));
+    if (heroSlideRef) {
+      heroSlideRef.current.addEventListener('mouseup', (e) => mouseUpAction(e));
+      heroSlideRef.current.addEventListener('mousedown', (e) =>
+        mouseDownAction(e),
+      );
+    }
     return () => {
-      window.removeEventListener('mouseup', mouseUpAction);
-      window.removeEventListener('mousedown', mouseDownAction);
+      heroSlideRef.current.removeEventListener('mouseup', mouseUpAction);
+      heroSlideRef.current.removeEventListener('mousedown', mouseDownAction);
     };
   }, []);
 
@@ -83,6 +88,7 @@ const HeroSlide = () => {
       <div
         className="heroSlide"
         style={{ width: `${movieItems.length}` * 100 + 'vw' }}
+        ref={heroSlideRef}
       >
         {movieItems.map((e, i) => {
           return <HeroSlideItems key={i} item={e} />;

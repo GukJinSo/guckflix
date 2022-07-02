@@ -11,24 +11,22 @@ export const mouseUpAction = (e) => {
   if (isPressed) {
     const heroSlide = document.querySelector('.heroSlide');
     const slideItems = document.querySelectorAll('.heroSlide__items');
-    var first = slideItems[0];
-    var last = slideItems[slideItems.length - 1];
 
     // 슬라이더 뒤로
-    if (e.clientX - clientMouseX > 100) {
-      if (currentIdx != 0) {
+    if (e.clientX - clientMouseX > 80) {
+      if (currentIdx !== 0) {
         currentIdx--;
-      } else if (currentIdx == 0) {
+      } else if (currentIdx === 0) {
         currentIdx = slideItems.length - 1;
       }
       // 슬라이더 앞으로
-    } else if (clientMouseX - e.clientX > 100) {
-      if (currentIdx != slideItems.length - 1) {
+    } else if (clientMouseX - e.clientX > 80) {
+      if (currentIdx !== slideItems.length - 1) {
         currentIdx++;
-      } else if (currentIdx == slideItems.length - 1) {
+      } else if (currentIdx === slideItems.length - 1) {
         currentIdx = 0;
       }
-      // 이동값이 100을 못 넘으면
+      // 이동값이 80을 못 넘으면
     } else {
       return;
     }
