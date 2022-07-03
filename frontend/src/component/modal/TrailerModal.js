@@ -10,9 +10,12 @@ const TrailerModal = ({ item }) => {
     const getVideo = async () => {
       const response = await tmdbApi.getVideos(category.movie, item.id);
       // 관련 비디오가 많은 경우 트레일러만 가져오겠다
-      const youtubeUrlKey = response.data.results.filter((e) => {
+      let youtubeUrlKey = response.data.results.filter((e) => {
         return e.type === videoType.trailer ? e : null;
       });
+      if (youtubeUrlKey.length === 0) {
+        youtubeUrlKey = response.data.results[0].key;
+      }
       iframeRef.current.src = apiConfig.youtubeUrl + youtubeUrlKey[0].key;
       setIframeSrc(iframeRef.current.src);
     };

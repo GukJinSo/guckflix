@@ -2,6 +2,7 @@ import axiosCustom from './axiosCustom.js';
 
 export const category = {
   movie: 'movie',
+  tv: 'tv',
 };
 
 export const videoType = {

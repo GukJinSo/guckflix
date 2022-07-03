@@ -11,7 +11,7 @@ const axiosCustom = axios.create({
     queryString.stringify({
       ...params,
       api_key: apiConfig.apiKey,
-      // language: 'ko',
+      language: apiConfig.language,
     }),
 });
 

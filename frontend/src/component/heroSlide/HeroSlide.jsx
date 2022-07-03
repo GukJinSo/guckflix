@@ -6,6 +6,17 @@ import './heroSlide.css';
 import { mouseUpAction, mouseDownAction } from './slider';
 
 const HeroSlideItems = ({ item }) => {
+  const string = {
+    en: {
+      watchTrailer: 'Watch Trailer',
+      moreInfo: 'More Info',
+    },
+    ko: {
+      watchTrailer: '트레일러 재생',
+      moreInfo: '상세',
+    },
+  };
+
   const backgroundImageURL = apiConfig.originalImage(item.backdrop_path);
   const posterImageURL = apiConfig.w500Image(item.poster_path);
 
@@ -35,11 +46,11 @@ const HeroSlideItems = ({ item }) => {
               }}
             >
               <span className="material-symbols-outlined">play_circle</span>
-              Watch Trailer
+              {string.ko.watchTrailer}
             </button>
             <button className="heroSlide__items__content__info__buttonDiv__button">
               <span className="material-symbols-outlined">info</span>
-              More info
+              {string.ko.moreInfo}
             </button>
           </div>
         </div>
