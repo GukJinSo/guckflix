@@ -3,7 +3,7 @@ import apiConfig from '../../config/apiConfig';
 import tmdbApi, { movieType } from '../../config/tmdbApi';
 import TrailerModal from '../modal/TrailerModal';
 import './heroSlide.css';
-import { mouseUpAction, mouseDownAction } from './slider';
+import { mouseUpAction, mouseDownAction } from './heroSlider';
 
 const HeroSlideItems = ({ item }) => {
   const string = {
@@ -88,10 +88,10 @@ const HeroSlide = () => {
         mouseDownAction(e),
       );
     }
-    return () => {
-      heroSlideRef.current.removeEventListener('mouseup', mouseUpAction);
-      heroSlideRef.current.removeEventListener('mousedown', mouseDownAction);
-    };
+    // return () => {
+    //   heroSlideRef.current.removeEventListener('mouseup', mouseUpAction);
+    //   heroSlideRef.current.removeEventListener('mousedown', mouseDownAction);
+    // };
   }, []);
 
   return (

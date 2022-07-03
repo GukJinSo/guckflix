@@ -10,15 +10,24 @@ export const videoType = {
 };
 
 export const movieType = {
+  top_rated: 'top_rated',
   upcoming: 'upcoming',
   popular: 'popular',
+  now_playing: 'now_playing',
+};
+
+export const TvType = {
   top_rated: 'top_rated',
-  latest: 'latest',
+  popular: 'popular',
 };
 
 const tmdbApi = {
   getMoviesList: (type, params) => {
     const url = 'movie/' + movieType[type];
+    return axiosCustom.get(url, params);
+  },
+  getTVList: (type, params) => {
+    const url = 'tv/' + TvType[type];
     return axiosCustom.get(url, params);
   },
   getVideos: (cate, id) => {
