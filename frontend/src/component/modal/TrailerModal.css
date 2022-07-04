@@ -18,10 +18,25 @@
   display: none;
 }
 
-iframe {
+.modal iframe {
   border: 1vw solid black;
   position: absolute;
   width: 50vw;
   height: 28.125vw;
   background-color: black;
+}
+
+.modal iframe {
+  animation-duration: 1s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-top: -40vh;
+  }
+
+  to {
+    margin-top: 0;
+  }
 }

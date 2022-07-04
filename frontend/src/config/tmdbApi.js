@@ -21,18 +21,28 @@ export const TvType = {
   popular: 'popular',
 };
 
+export const VideoSliderActionType = {
+  main: 'main',
+  similar: 'similar',
+  catalog: 'catalog',
+};
+
 const tmdbApi = {
-  getMoviesList: (type, params) => {
-    const url = 'movie/' + movieType[type];
-    return axiosCustom.get(url, params);
-  },
-  getTVList: (type, params) => {
-    const url = 'tv/' + TvType[type];
+  getList: (cate, type, params) => {
+    const url = category[cate] + '/' + movieType[type];
     return axiosCustom.get(url, params);
   },
   getVideos: (cate, id) => {
     const url = category[cate] + '/' + id + '/videos';
     return axiosCustom.get(url, { params: {} });
+  },
+  getDetail: (cate, id, params) => {
+    const url = category[cate] + '/' + id;
+    return axiosCustom.get(url, params);
+  },
+  getSimilar: (cate, id, params) => {
+    const url = category[cate] + '/' + id + '/similar';
+    return axiosCustom.get(url, params);
   },
 };
 

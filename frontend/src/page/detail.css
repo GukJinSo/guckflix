@@ -1,0 +1,26 @@
+.detail {
+  color: white;
+  background-color: black;
+}
+
+.detail__tops {
+  height: 100vh;
+  display: flex;
+  flex-flow: row;
+  transition: transform 1s ease;
+  background-size: cover;
+  background-position: center;
+  padding: 0 10vw;
+  font-family: 'Noto Sans KR';
+  align-items: center;
+}
+
+.detail__tops__title {
+  font-size: 4vw;
+  font-weight: 700;
+}
+
+.detail__tops__sub {
+  font-size: 2vw;
+  font-weight: 500;
+}
