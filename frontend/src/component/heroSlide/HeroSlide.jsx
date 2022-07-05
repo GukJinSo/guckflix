@@ -4,6 +4,7 @@ import tmdbApi, { category, movieType } from '../../config/tmdbApi';
 import TrailerModal from '../modal/TrailerModal';
 import './heroSlide.css';
 import { mouseUpAction, mouseDownAction } from './heroSlider';
+import { useNavigate } from 'react-router-dom';
 
 const HeroSlideItems = ({ item }) => {
   const string = {
@@ -16,6 +17,8 @@ const HeroSlideItems = ({ item }) => {
       moreInfo: '상세',
     },
   };
+
+  const navigate = useNavigate();
 
   const backgroundImageURL = apiConfig.originalImage(item.backdrop_path);
   const posterImageURL = apiConfig.w500Image(item.poster_path);
@@ -48,7 +51,12 @@ const HeroSlideItems = ({ item }) => {
               <span className="material-symbols-outlined">play_circle</span>
               {string.ko.watchTrailer}
             </button>
-            <button className="heroSlide__items__content__info__buttonDiv__button">
+            <button
+              className="heroSlide__items__content__info__buttonDiv__button"
+              onClick={() => {
+                navigate(`/detail/movie/${item.id}`);
+              }}
+            >
               <span className="material-symbols-outlined">info</span>
               {string.ko.moreInfo}
             </button>
