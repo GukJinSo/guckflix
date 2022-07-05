@@ -65,6 +65,8 @@ const VideoSliderItems = ({ item, action }) => {
 
         case VideoSliderActionType.catalog:
           break;
+        default:
+          break;
       }
     };
     getList();

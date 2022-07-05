@@ -5,14 +5,15 @@
 
 .detail__tops {
   height: 100vh;
-  display: flex;
-  flex-flow: row;
-  transition: transform 1s ease;
   background-size: cover;
   background-position: center;
-  padding: 0 10vw;
+  padding: 0px 10vw;
+  padding-top: 5vw;
   font-family: 'Noto Sans KR';
-  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .detail__tops__title {
@@ -21,6 +22,56 @@
 }
 
 .detail__tops__sub {
-  font-size: 2vw;
-  font-weight: 500;
+  display: flex;
+  gap: 0.5vw;
+  margin-bottom: 2vh;
+  align-items: center;
 }
+
+.detail__tops__sub__runtime {
+  font-size: 1.2vw;
+  font-weight: 100;
+}
+
+.detail__tops__sub__genre__item {
+  font-weight: 300;
+  font-size: 0.8vw;
+  border: 3px solid grey;
+  border-radius: 25px;
+  padding: 2px 10px;
+}
+
+.detail__tops__posterSection {
+  display: flex;
+  box-sizing: border-box;
+  height: 50vh;
+  width: 100%;
+  gap: 0.5vw;
+}
+
+.detail__tops__tagline {
+  font-size: 3vh;
+  font-weight: 100;
+  font-style: oblique;
+  margin-top: 4vh;
+}
+
+.detail__tops__posterSection__img {
+}
+
+.detail__tops__posterSection__trailer {
+  flex: 2;
+  height: 100%;
+}
+
+.detail__tops__posterSection img {
+  height: 100%;
+}
+
+.detail__tops__posterSection iframe {
+  height: 100%;
+  width: 100%;
+  border: none;
+}
+/* width: 50vw;
+height: 28.125vw; */

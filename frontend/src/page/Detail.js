@@ -32,12 +32,17 @@ const Detail = () => {
     getVideo();
   }, [id, category]);
 
+  useEffect(() => {
+    console.log(detail);
+  }, [detail]);
+
   const showList = [
     {
       category: category,
       text: '유사한 작품',
     },
   ];
+
   const action = VideoSliderActionType.similar;
   const backgroundImageURL = apiConfig.originalImage(detail.backdrop_path);
   const posterImageURL = apiConfig.w500Image(detail.poster_path);
@@ -48,19 +53,41 @@ const Detail = () => {
         className="detail__tops"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)),' +
+            'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),' +
             `url(${backgroundImageURL})`,
         }}
       >
-        <div className="detail__tops__title">{detail.title}</div>
-        <div className="detail__tops__genre"></div>
-        <div className="detail__tops__sub"></div>
-        <div className="detail__tops__posterSection">
-          <div className="detail__tops__posterSection__img"></div>
-          <div className="detail__tops__posterSection__trailer">
-            <iframe ref={iframeRef} />
-          </div>
+        <div className="detail__tops__title">
+          {detail.title ? detail.title : detail.name}
         </div>
+        <div className="detail__tops__genre"></div>
+        <div className="detail__tops__sub">
+          {detail.runtime && (
+            <div className="detail__tops__sub__runtime">{detail.runtime}M</div>
+          )}
+
+          {detail.genres &&
+            detail.genres.map((e, i) => {
+              return (
+                <div className="detail__tops__sub__genre__item">{e.name}</div>
+              );
+            })}
+        </div>
+        <div className="detail__tops__posterSection">
+          <img
+            src={`${posterImageURL}`}
+            className="detail__tops__posterSection__img"
+            alt=""
+          />
+          <iframe
+            className="detail__tops__posterSection__trailer"
+            ref={iframeRef}
+            src="iframeSrc"
+          />
+        </div>
+        {detail.tagline && (
+          <div className="detail__tops__tagline">{detail.tagline}</div>
+        )}
       </div>
       <div className="detail__bottoms">
         <div className="detail__bottoms__overview">{detail.overview}</div>
