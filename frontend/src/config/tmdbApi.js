@@ -25,6 +25,7 @@ export const VideoSliderActionType = {
   main: 'main',
   similar: 'similar',
   catalog: 'catalog',
+  credit: 'credit',
 };
 
 const tmdbApi = {
@@ -42,6 +43,10 @@ const tmdbApi = {
   },
   getSimilar: (cate, id, params) => {
     const url = category[cate] + '/' + id + '/similar';
+    return axiosCustom.get(url, params);
+  },
+  getCredit: (cate, id, params) => {
+    const url = category[cate] + '/' + id + '/credits';
     return axiosCustom.get(url, params);
   },
 };

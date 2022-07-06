@@ -20,6 +20,7 @@
 .header__logo {
   text-align-last: center;
   height: 38px;
+  cursor: pointer;
 }
 .header__logo__img {
   height: inherit;
@@ -35,6 +36,7 @@
 
 .header__itmes__li {
   list-style-type: none;
+  cursor: pointer;
 }
 
 .header__itmes__li a:hover {

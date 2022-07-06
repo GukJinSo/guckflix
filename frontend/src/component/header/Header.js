@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../img/header_logo.png';
 import './header.css';
 
@@ -10,6 +10,8 @@ const Header = () => {
     { text: 'Movie', path: '/movie' },
     { text: 'TV', path: '/tv' },
   ];
+
+  const nav = useNavigate();
 
   // 헤더 축소 애니메이션
   const header = useRef(null);
@@ -30,7 +32,12 @@ const Header = () => {
 
   return (
     <div className="header" ref={header}>
-      <div className="header__logo">
+      <div
+        className="header__logo"
+        onClick={() => {
+          nav('/');
+        }}
+      >
         <img src={logo} className="header__logo__img" alt="" />
       </div>
       <ul className="header__items">

@@ -23,8 +23,13 @@ const Detail = () => {
     let youtubeUrlKey = response.data.results.filter((e) => {
       return e.type === videoType.trailer ? e : '';
     });
-    iframeRef.current.src = apiConfig.youtubeUrl + youtubeUrlKey[0].key;
-    setIframeSrc(iframeRef.current.src);
+
+    // 없다면 트레일러가 아닌 영상이라도 삽입
+    let src =
+      youtubeUrlKey.length !== 0
+        ? apiConfig.youtubeUrl + youtubeUrlKey[0].key
+        : apiConfig.youtubeUrl + response.data.results[0].key;
+    setIframeSrc(src);
   };
 
   useEffect(() => {
@@ -37,13 +42,22 @@ const Detail = () => {
   }, [detail]);
 
   const showList = [
-    {
-      category: category,
-      text: '유사한 작품',
-    },
+    [
+      {
+        category: category,
+        text: '배역',
+      },
+    ],
+    [
+      {
+        category: category,
+        text: '유사한 작품',
+      },
+    ],
   ];
 
-  const action = VideoSliderActionType.similar;
+  const similar = VideoSliderActionType.similar;
+  const credit = VideoSliderActionType.credit;
   const backgroundImageURL = apiConfig.originalImage(detail.backdrop_path);
   const posterImageURL = apiConfig.w500Image(detail.poster_path);
 
@@ -53,14 +67,13 @@ const Detail = () => {
         className="detail__tops"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),' +
+            'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)),' +
             `url(${backgroundImageURL})`,
         }}
       >
         <div className="detail__tops__title">
           {detail.title ? detail.title : detail.name}
         </div>
-        <div className="detail__tops__genre"></div>
         <div className="detail__tops__sub">
           {detail.runtime && (
             <div className="detail__tops__sub__runtime">{detail.runtime}M</div>
@@ -82,7 +95,7 @@ const Detail = () => {
           <iframe
             className="detail__tops__posterSection__trailer"
             ref={iframeRef}
-            src="iframeSrc"
+            src={iframeSrc}
           />
         </div>
         {detail.tagline && (
@@ -90,10 +103,18 @@ const Detail = () => {
         )}
       </div>
       <div className="detail__bottoms">
-        <div className="detail__bottoms__overview">{detail.overview}</div>
-        <div className="detail__bottoms__casts"></div>
+        <div className="detail__bottoms__overview">
+          <div className="detail__bottoms__overview__title">개요</div>
+
+          <div className="detail__bottoms__overview__text">
+            {detail.overview}
+          </div>
+        </div>
+        <div className="detail__bottoms__casts">
+          <VideoSlider showList={showList[0]} action={credit} />
+        </div>
         <div className="detail__bottoms__similars">
-          <VideoSlider showList={showList} action={action} />
+          <VideoSlider showList={showList[1]} action={similar} />
         </div>
       </div>
     </div>

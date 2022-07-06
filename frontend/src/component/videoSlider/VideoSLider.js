@@ -9,18 +9,48 @@ import apiConfig from '../../config/apiConfig';
 import './videoSlider.css';
 import { useNavigate, useParams } from 'react-router';
 
-const VideoCard = ({ cardItem }) => {
-  const posterImageURL = apiConfig.w500Image(cardItem.poster_path);
+const VideoCard = ({ cardItem, action }) => {
+  const [hover, setHover] = useState(false);
+  const style = {
+    transform:
+      hover & (action !== VideoSliderActionType.credit)
+        ? 'scale(1)'
+        : 'scale(0.95)',
+    color: hover & (action !== VideoSliderActionType.credit) ? 'red' : 'white',
+    cursor:
+      hover & (action !== VideoSliderActionType.credit) ? 'pointer' : 'revert',
+    transition: '0.5s ease',
+  };
+
+  let imageURL;
+  switch (action) {
+    case VideoSliderActionType.credit:
+      imageURL = apiConfig.w500Image(cardItem.profile_path);
+      break;
+    default:
+      imageURL = apiConfig.w500Image(cardItem.poster_path);
+      break;
+  }
+
   const navigate = useNavigate();
   return (
     <div
       className="videoSlider__items__cards__wrap__card"
+      style={style}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
       onClick={() => {
-        navigate(`/detail/${cardItem.category}/${cardItem.id}`);
+        switch (action) {
+          case VideoSliderActionType.credit:
+            break;
+          default:
+            navigate(`/detail/${cardItem.category}/${cardItem.id}`);
+            break;
+        }
       }}
     >
-      <div className="videoSlider__items__cards__wrap__card__img">
-        <img src={`${posterImageURL}`} alt="" />
+      <div className="videoSlider__items__cards__wrap__card__img" style={style}>
+        <img src={`${imageURL}`} alt="" />
       </div>
       {/* 드라마는 title, 영화는 name을 사용 */}
       <div className="videoSlider__items__cards__wrap__card__title">
@@ -37,7 +67,6 @@ const VideoSliderItems = ({ item, action }) => {
     const getList = async () => {
       let params;
       let response;
-      console.log(action);
       switch (action) {
         // 메인 화면인 경우
         case VideoSliderActionType.main:
@@ -65,6 +94,15 @@ const VideoSliderItems = ({ item, action }) => {
 
         case VideoSliderActionType.catalog:
           break;
+
+        // 배역 찾는 경우
+        case VideoSliderActionType.credit:
+          params = {};
+          response = await tmdbApi.getCredit(category, id, {
+            params,
+          });
+          setSliderItems(response.data.cast);
+          break;
         default:
           break;
       }
@@ -78,7 +116,7 @@ const VideoSliderItems = ({ item, action }) => {
       <div className="videoSlider__items__cards">
         <div className="videoSlider__items__cards__wrap">
           {sliderItems.map((e, i) => {
-            return <VideoCard cardItem={e} />;
+            return <VideoCard cardItem={e} action={action} />;
           })}
         </div>
       </div>
