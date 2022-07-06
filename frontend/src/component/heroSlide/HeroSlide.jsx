@@ -68,7 +68,7 @@ const HeroSlideItems = ({ item }) => {
           alt=""
         />
       </div>
-      <TrailerModal item={item} />
+      <TrailerModal key={item.id} item={item} />
     </div>
   );
 };
@@ -100,10 +100,7 @@ const HeroSlide = () => {
         mouseDownAction(e),
       );
     }
-    // return () => {
-    //   heroSlideRef.current.removeEventListener('mouseup', mouseUpAction);
-    //   heroSlideRef.current.removeEventListener('mousedown', mouseDownAction);
-    // };
+    console.log('메인');
   }, []);
 
   return (
@@ -114,7 +111,7 @@ const HeroSlide = () => {
         ref={heroSlideRef}
       >
         {movieItems.map((e, i) => {
-          return <HeroSlideItems key={i} item={e} />;
+          return <HeroSlideItems item={e} key={i} />;
         })}
       </div>
     </div>

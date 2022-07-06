@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './page/Home';
 import Footer from './component/footer/Footer';
 import Catalog from './page/Catalog';
-import Detail from './page/Detail';
+import Detail from './page/detail/Detail';
 
 function App() {
   return (

@@ -1,3 +1,10 @@
 #apiconfig cuz of gitignore
 
-youtubeUrl: ' https://www.youtube.com/embed/'
+  originalImage: (imgPath) =>
+    imgPath !== null && imgPath !== undefined && imgPath !== 'undefined'
+      ? `https://image.tmdb.org/t/p/original/${imgPath}`
+      : null,
+  w500Image: (imgPath) =>
+    imgPath !== null && imgPath !== undefined && imgPath !== 'undefined'
+      ? `https://image.tmdb.org/t/p/w500/${imgPath}`
+      : null,

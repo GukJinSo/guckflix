@@ -7,8 +7,8 @@ const Header = () => {
   // Nav 요소
   const headerNav = [
     { text: 'Home', path: '/' },
-    { text: 'Movie', path: '/movie' },
-    { text: 'TV', path: '/tv' },
+    { text: 'Movie', path: '/catalog/movie' },
+    { text: 'TV', path: '/catalog/tv' },
   ];
 
   const nav = useNavigate();
@@ -41,9 +41,9 @@ const Header = () => {
         <img src={logo} className="header__logo__img" alt="" />
       </div>
       <ul className="header__items">
-        {headerNav.map((e) => {
+        {headerNav.map((e, i) => {
           return (
-            <li className="header__itmes__li">
+            <li className="header__itmes__li" key={i}>
               <Link to={e.path}>{e.text}</Link>
             </li>
           );
