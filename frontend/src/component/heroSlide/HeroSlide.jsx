@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import apiConfig from '../../config/apiConfig';
-import tmdbApi, { category, movieType } from '../../config/tmdbApi';
+import tmdbApi, { category, sortingType } from '../../config/tmdbApi';
 import TrailerModal from '../modal/TrailerModal';
 import './heroSlide.css';
 import { mouseUpAction, mouseDownAction } from './heroSlider';
@@ -81,7 +81,7 @@ const HeroSlide = () => {
       const params = {};
       const response = await tmdbApi.getList(
         category.movie,
-        movieType.popular,
+        sortingType.popular,
         {
           params,
         },

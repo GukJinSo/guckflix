@@ -106,7 +106,7 @@ const VideoSliderItems = ({ item, action }) => {
   );
 };
 
-const VideoCard = ({ data, action }) => {
+export const VideoCard = ({ data, action }) => {
   const [hover, setHover] = useState(false);
   const style = {
     transform:

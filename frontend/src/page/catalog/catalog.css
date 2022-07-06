@@ -1,0 +1,31 @@
+.catalog {
+  color: white;
+  background: black;
+  padding: 5vw;
+  padding-top: 20vh;
+}
+
+.catalog__search {
+  font-family: 'Noto Sans KR';
+  font-weight: 500;
+  font-size: 3vh;
+  margin-bottom: 5vh;
+  display: flex;
+}
+
+.catalog__videos {
+  display: flex;
+  box-sizing: border-box;
+  flex-flow: wrap;
+  text-align: center;
+}
+
+.catalog__videos .videoSlider__items__cards__wrap__card {
+  flex: 1;
+}
+
+.catalog__videos .videoSlider__items__cards__wrap__card__title {
+  font-size: 2vh;
+  padding: 0 0.5vw;
+  text-align: left;
+}

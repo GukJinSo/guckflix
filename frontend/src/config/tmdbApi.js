@@ -9,16 +9,11 @@ export const videoType = {
   trailer: 'Trailer',
 };
 
-export const movieType = {
+export const sortingType = {
   top_rated: 'top_rated',
   upcoming: 'upcoming',
   popular: 'popular',
   now_playing: 'now_playing',
-};
-
-export const TvType = {
-  top_rated: 'top_rated',
-  popular: 'popular',
 };
 
 export const VideoSliderActionType = {
@@ -30,7 +25,7 @@ export const VideoSliderActionType = {
 
 const tmdbApi = {
   getList: (cate, type, params) => {
-    const url = category[cate] + '/' + movieType[type];
+    const url = category[cate] + '/' + sortingType[type];
     return axiosCustom.get(url, params);
   },
   getVideos: (cate, id) => {
@@ -47,6 +42,10 @@ const tmdbApi = {
   },
   getCredit: (cate, id, params) => {
     const url = category[cate] + '/' + id + '/credits';
+    return axiosCustom.get(url, params);
+  },
+  getSearchResult: (cate, params) => {
+    const url = '/search/' + category[cate];
     return axiosCustom.get(url, params);
   },
 };
