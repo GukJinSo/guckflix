@@ -56,10 +56,12 @@ const Catalog = () => {
         <div className="catalog__search__text">{text.search}</div>
         <input value={searchKeyword} onKeyDown={handleKeyPress} type="text" />
       </div>
-      <div className="catalog__videos">
-        {videos.map((e, i) => {
-          return <VideoCard data={e} key={i} action={action} />;
-        })}
+      <div className="catalog__videos__wrap">
+        <div className="catalog__videos">
+          {videos.map((e, i) => {
+            return <VideoCard data={e} key={i} action={action} />;
+          })}
+        </div>
       </div>
     </div>
   );

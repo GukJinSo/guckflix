@@ -18,10 +18,11 @@
   box-sizing: border-box;
   flex-flow: wrap;
   text-align: center;
+  justify-content: center;
 }
 
 .catalog__videos .videoSlider__items__cards__wrap__card {
-  flex: 1;
+  width: min-content;
 }
 
 .catalog__videos .videoSlider__items__cards__wrap__card__title {
