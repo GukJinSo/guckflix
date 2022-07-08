@@ -14,14 +14,17 @@
 }
 
 .catalog__videos {
-  display: flex;
+  display: grid;
   box-sizing: border-box;
-  flex-flow: wrap;
-  text-align: center;
-  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+}
+
+.catalog__videos .videoSlider__items__cards__wrap__card__img img {
+  min-height: 180px;
 }
 
 .catalog__videos .videoSlider__items__cards__wrap__card {
+  justify-self: center;
   width: min-content;
 }
 
@@ -29,4 +32,8 @@
   font-size: 2vh;
   padding: 0 0.5vw;
   text-align: left;
+}
+
+.catalog input {
+  padding: 2px 4px;
 }
