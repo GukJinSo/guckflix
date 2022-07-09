@@ -11,18 +11,36 @@ import './catalog.css';
 
 const Catalog = () => {
   const { category } = useParams();
-  const [searchKeyword, setSearchKeyword] = useState('');
   const [videos, setVideos] = useState([]);
   const [params, setParams] = useState({
     page: 1,
+    isQuery: false,
   });
+
+  const [query, setQuery] = useState('');
 
   let arr = [];
 
-  const getVideo = async (params) => {
-    const response = await tmdbApi.getList(category, sortingType.popular, {
-      params,
-    });
+  const getVideo = async () => {
+    let response;
+    switch (params.isQuery) {
+      case false:
+        response = await tmdbApi.getList(category, sortingType.popular, {
+          params: {
+            page: params.page,
+          },
+        });
+        break;
+      case true:
+        response = await tmdbApi.getSearchResult(category, {
+          params: {
+            page: params.page,
+            query: query,
+          },
+        });
+        console.log(response.data.results);
+        break;
+    }
     response.data.results.forEach((e) => {
       let vo = {
         category: category,
@@ -40,28 +58,24 @@ const Catalog = () => {
   };
 
   useEffect(() => {
-    console.log(videos);
-  }, [videos]);
+    setVideos([]);
+    setQuery('');
+    setParams({ ...params, page: 1, isQuery: false });
+  }, [category]);
 
   useEffect(() => {
-    setParams({ ...params, page: 1 });
-    setVideos([]);
-    getVideo(params);
-  }, [category]);
+    getVideo();
+  }, [params]);
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      console.log('enter pressed');
-      setSearchKeyword(e.target.value);
+      setVideos([]);
+      setParams({ ...params, isQuery: true });
     }
   };
   const changeHandle = (e) => {
-    setSearchKeyword(e.target.value);
+    setQuery(e.target.value);
   };
-
-  useEffect(() => {
-    console.log(searchKeyword);
-  }, [searchKeyword]);
 
   const action = VideoSliderActionType.catalog;
   const text = {
@@ -73,7 +87,7 @@ const Catalog = () => {
     <div className="catalog">
       <div className="catalog__search">
         <input
-          value={searchKeyword}
+          value={query}
           onKeyDown={handleKeyPress}
           onChange={changeHandle}
           type="text"
@@ -94,18 +108,9 @@ const Catalog = () => {
           className="catalog__loadMore__button"
           onClick={() => {
             setParams({ ...params, page: params.page + 1 });
-            getVideo(params);
           }}
         >
           {text.loadMore}
-        </button>
-        <button
-          className="catalog__loadMore__button"
-          onClick={() => {
-            setVideos([]);
-          }}
-        >
-          올삭제
         </button>
       </div>
     </div>

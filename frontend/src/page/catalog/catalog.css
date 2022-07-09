@@ -1,3 +1,8 @@
+.App {
+  background: black;
+  height: 100vh;
+}
+
 .catalog {
   color: white;
   background: black;
