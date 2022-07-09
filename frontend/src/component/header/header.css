@@ -12,7 +12,7 @@
 
 .shrinkHeader {
   background-color: black;
-  height: 60px;
+  height: 50px;
   opacity: 0.8;
   transition: 0.7s ease;
 }
@@ -32,6 +32,7 @@
   justify-content: end;
   gap: 10%;
   padding: 0 5rem;
+  margin: 0;
 }
 
 .header__itmes__li {

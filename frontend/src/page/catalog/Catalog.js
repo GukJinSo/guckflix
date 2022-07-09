@@ -70,7 +70,7 @@ const Catalog = () => {
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       setVideos([]);
-      setParams({ ...params, isQuery: true });
+      setParams({ ...params, page: 1, isQuery: true });
     }
   };
   const changeHandle = (e) => {
