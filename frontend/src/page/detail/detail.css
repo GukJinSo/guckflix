@@ -52,25 +52,22 @@
   gap: 0.5vw;
   display: flex;
   box-sizing: border-box;
-  height: 70vh;
+  /* height: 70vh; */
   width: 100%;
   border: 3px solid black;
   background: black;
 }
 .detail__tops__posterSection img {
-  height: 100%;
+  min-width: 50px;
+  max-width: 30%;
 }
 
 .detail__tops__posterSection iframe {
   flex: 2;
-  height: 100%;
   box-sizing: border-box;
-  height: 100%;
-  width: 100%;
+  max-width: 70%;
   border: none;
 }
-/* width: 50vw;
-height: 28.125vw; */
 
 .detail__bottoms__overview {
   padding: 5vw;

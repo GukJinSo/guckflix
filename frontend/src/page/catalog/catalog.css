@@ -23,6 +23,10 @@
   box-sizing: border-box;
 }
 
+.catalog__videos__wrap {
+  margin-bottom: 5vh;
+}
+
 @media (max-width: 499px) {
   .catalog__videos {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -57,5 +61,25 @@
 }
 
 .catalog input {
-  padding: 2px 4px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.catalog__loadMore {
+  text-align: center;
+}
+
+.catalog__loadMore__button {
+  cursor: pointer;
+  color: white;
+  background: none;
+  border: 2px solid white;
+  top: 2px;
+  height: 5vh;
+  border-radius: 8px;
+  padding: 0 1vw;
+  font-family: 'Noto Sans KR';
+  font-weight: 500;
+  cursor: grab;
+  opacity: 1;
 }

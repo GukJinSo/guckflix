@@ -12,7 +12,7 @@
   font-family: 'Noto Sans KR';
   font-weight: 500;
   font-size: 3vh;
-  margin-bottom: 5vh;
+  margin-bottom: 3vh;
 }
 .videoSlider__items__cards {
   overflow: hidden;
@@ -21,7 +21,7 @@
 .videoSlider__items__cards__wrap {
   display: flex;
   /* transform: translateX(-1000px); */
-  transition: 1s ease;
+  transition: 0.5s ease;
 }
 .videoSlider__items__cards__wrap__card__title {
   font-size: 2vh;
@@ -32,4 +32,37 @@
   border-radius: 20px;
   height: 40vh;
   -webkit-user-drag: none;
+}
+
+.videoSlider__items__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.videoSlider__items > div:nth-child(1) {
+  display: flex;
+  gap: 1vw;
+  justify-content: space-between;
+}
+
+.videoSlider__items button {
+  cursor: pointer;
+  color: white;
+  background: none;
+  border: 2px solid white;
+  top: 2px;
+  height: 5vh;
+  border-radius: 8px;
+  padding: 0 1vw;
+  font-family: 'Noto Sans KR';
+  font-weight: 500;
+  cursor: grab;
+  opacity: 1;
+}
+
+.videoSlider__items .material-symbols-outlined {
+  font-size: 1.5vw;
+  alignment-baseline: middle;
+  position: relative;
 }

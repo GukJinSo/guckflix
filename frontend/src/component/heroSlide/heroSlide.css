@@ -58,7 +58,7 @@
   justify-self: center;
   z-index: 10;
   width: 80%;
-  min-width: 200px;
+  min-width: 100px;
   transform: scale(1);
   transition: transform 0.3s ease-in-out;
 }
