@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import tmdbApi, { VideoSliderActionType } from '../../config/tmdbApi';
 import apiConfig from '../../config/apiConfig';
 import './videoSlider.css';
@@ -92,11 +92,42 @@ const VideoSliderItems = ({ item, action }) => {
     getList();
   }, []);
 
+  const wrapRef = useRef(null);
+  const slideConfig = {
+    left: 'left',
+    right: 'right',
+  };
+  let count = 0;
+  let divide = 4;
+  let moved = 0;
+  const sliderAction = (direction) => {
+    const totalWidth = wrapRef.current.scrollWidth;
+
+    // 뒤로(왼쪽) 가는 경우
+    if (direction === slideConfig.left && count > 0) {
+      moved = moved + totalWidth / divide;
+      count = count - 1;
+      // 앞으로(오른쪽) 가는 경우
+    } else if (
+      direction === slideConfig.right &&
+      Math.abs(count) + 1 < divide
+    ) {
+      moved = moved + -(totalWidth / divide);
+      count = count + 1;
+    }
+    wrapRef.current.style.transform = `translateX(${moved}px)`;
+  };
+  const navigate = useNavigate();
   return (
     <div className="videoSlider__items">
       <div className="videoSlider__items__title">{item.text}</div>
+      <button onClick={() => sliderAction(slideConfig.left)}>뒤로</button>
+      <button onClick={() => sliderAction(slideConfig.right)}>앞으로</button>
+      <button onClick={() => navigate(`/catalog/${item.category}`)}>
+        더 보기
+      </button>
       <div className="videoSlider__items__cards">
-        <div className="videoSlider__items__cards__wrap">
+        <div className="videoSlider__items__cards__wrap" ref={wrapRef}>
           {sliderItems.map((e, i) => {
             return <VideoCard data={e} action={action} key={i} />;
           })}

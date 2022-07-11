@@ -40,6 +40,7 @@ const Catalog = () => {
         });
         console.log(response.data.results);
         break;
+      default:
     }
     response.data.results.forEach((e) => {
       let vo = {
