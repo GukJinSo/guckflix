@@ -161,17 +161,6 @@ const VideoSliderItems = ({ item, action }) => {
 
 export const VideoCard = ({ data, action }) => {
   const [hover, setHover] = useState(false);
-
-  const [imgSrc, setImageSrc] = useState(noImage);
-  const [name, setName] = useState('');
-  const imgRef = useRef();
-  useEffect(() => {
-    setImageSrc(data.url);
-  }, []);
-  useEffect(() => {
-    setName(data.name);
-  }, [imgSrc]);
-
   const style = {
     transform:
       hover & (action !== VideoSliderActionType.credit)
@@ -182,6 +171,11 @@ export const VideoCard = ({ data, action }) => {
       hover & (action !== VideoSliderActionType.credit) ? 'pointer' : 'revert',
     transition: '0.5s ease',
   };
+
+  const [img, setImg] = useState(noImage);
+  useEffect(() => {
+    setImg(data.url);
+  }, []);
 
   const navigate = useNavigate();
 
@@ -205,9 +199,11 @@ export const VideoCard = ({ data, action }) => {
       }}
     >
       <div className="videoSlider__items__cards__wrap__card__img">
-        <img src={imgSrc} onError={handleImageError} alt="" ref={imgRef} />
+        <img src={img} onError={handleImageError} alt="" />
       </div>
-      <div className="videoSlider__items__cards__wrap__card__title">{name}</div>
+      <div className="videoSlider__items__cards__wrap__card__title">
+        {data.name}
+      </div>
     </div>
   );
 };

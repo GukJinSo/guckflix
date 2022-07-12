@@ -1,5 +1,8 @@
-apiConfig 파일 수정이 필요합니다. 
-아래의 apiConfig.apiKey를 수정해야 사용가능합니다.
+// 구동 방법
+
+apiConfig 파일을 만들어서 사용해야 동작합니다. 
+config 폴더 아래 apiConfig.js를 아래와 같은 내용으로 작성하고,
+발급받은 apiKey를 수정해야 사용가능합니다.
 
 
 const apiConfig = {
