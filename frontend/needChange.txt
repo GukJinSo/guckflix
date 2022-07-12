@@ -1,5 +1,13 @@
-#apiconfig cuz of gitignore
+apiConfig 파일 수정이 필요합니다. 
+아래의 apiConfig.apiKey를 수정해야 사용가능합니다.
 
+
+const apiConfig = {
+  baseUrl: 'https://api.themoviedb.org/3/',
+  apiKey: '',
+  youtubeUrl: ' https://www.youtube.com/embed/',
+  // language: 'ko',
+  // 원본 크기 이미지와 썸네일 이미지
   originalImage: (imgPath) =>
     imgPath !== null && imgPath !== undefined && imgPath !== 'undefined'
       ? `https://image.tmdb.org/t/p/original/${imgPath}`
@@ -8,3 +16,6 @@
     imgPath !== null && imgPath !== undefined && imgPath !== 'undefined'
       ? `https://image.tmdb.org/t/p/w500/${imgPath}`
       : null,
+};
+
+export default apiConfig;
