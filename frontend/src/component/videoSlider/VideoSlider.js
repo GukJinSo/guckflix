@@ -178,6 +178,9 @@ export const VideoCard = ({ data, action }) => {
   const handleImageError = (e) => {
     e.target.src = noImage;
   };
+
+  const [loading, setLoading] = useState(true);
+
   return (
     <div
       className="videoSlider__items__cards__wrap__card"
@@ -195,10 +198,15 @@ export const VideoCard = ({ data, action }) => {
       }}
     >
       <div className="videoSlider__items__cards__wrap__card__img">
-        <img src={data.url} onError={handleImageError} alt="" />
+        <img
+          src={loading ? noImage : data.url}
+          onError={handleImageError}
+          alt=""
+          onLoad={() => setLoading(false)}
+        />
       </div>
       <div className="videoSlider__items__cards__wrap__card__title">
-        {data.name}
+        {loading ? '' : data.name}
       </div>
     </div>
   );
