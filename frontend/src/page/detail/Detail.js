@@ -72,18 +72,24 @@ const Detail = () => {
           {detail.title ? detail.title : detail.name}
         </div>
         <div className="detail__tops__sub">
+          {detail.release_date && (
+            <div className="detail__tops__sub__relDate">
+              {detail.release_date.substr(0, 4)}
+            </div>
+          )}
           {detail.runtime && (
             <div className="detail__tops__sub__runtime">{detail.runtime}M</div>
           )}
-
-          {detail.genres &&
-            detail.genres.map((e, i) => {
-              return (
-                <div className="detail__tops__sub__genre__item" key={i}>
-                  {e.name}
-                </div>
-              );
-            })}
+          <div className="detail__tops__sub__runtime__genre">
+            {detail.genres &&
+              detail.genres.map((e, i) => {
+                return (
+                  <div className="detail__tops__sub__genre__item" key={i}>
+                    {e.name}
+                  </div>
+                );
+              })}
+          </div>
         </div>
         <div className="detail__tops__posterSection">
           <img

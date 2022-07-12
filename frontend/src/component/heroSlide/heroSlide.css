@@ -7,6 +7,12 @@
   cursor: grab;
 }
 
+@media (max-width: 500px) {
+  .heroSlide {
+    height: 60vh;
+  }
+}
+
 .heroSlide__items {
   background-size: cover;
   width: 100vw;

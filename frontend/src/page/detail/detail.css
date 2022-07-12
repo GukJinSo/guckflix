@@ -8,7 +8,7 @@
   background-size: cover;
   background-position: center;
   padding: 0px 10vw;
-  padding-top: 10vw;
+  padding-top: 20vh;
   font-family: 'Noto Sans KR';
   justify-content: center;
   overflow: hidden;
@@ -24,22 +24,29 @@
 }
 
 .detail__tops__sub {
+  align-items: center;
   display: flex;
   gap: 0.5vw;
-  align-items: center;
+  flex-wrap: wrap;
 }
 
-.detail__tops__sub__runtime {
+.detail__tops__sub__runtime,
+.detail__tops__sub__relDate {
   font-size: 1.2vw;
   font-weight: 100;
+}
+
+.detail__tops__sub__runtime__genre {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .detail__tops__sub__genre__item {
   font-weight: 300;
   font-size: 0.8vw;
-  border: 3px solid grey;
+  border: 2px solid grey;
   border-radius: 25px;
-  padding: 2px 10px;
+  padding: 2px 5px;
 }
 
 .detail__tops__tagline {

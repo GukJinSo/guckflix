@@ -48,17 +48,19 @@ const VideoSliderItems = ({ item, action }) => {
         response = await tmdbApi.getSimilar(category, id, {
           params,
         });
-        response.data.results.forEach((e) => {
-          let vo = {
-            category: category,
-            name: e.title ? e.title : e.name,
-            url: e.poster_path
-              ? apiConfig.w500Image(e.poster_path)
-              : apiConfig.w500Image(e.profile_path),
-            id: e.id,
-          };
-          vo.url = vo.url === null ? noImage : vo.url;
-          arr.push(vo);
+        response.data.results.forEach((e, i) => {
+          if (i < 20) {
+            let vo = {
+              category: category,
+              name: e.title ? e.title : e.name,
+              url: e.poster_path
+                ? apiConfig.w500Image(e.poster_path)
+                : apiConfig.w500Image(e.profile_path),
+              id: e.id,
+            };
+            vo.url = vo.url === null ? noImage : vo.url;
+            arr.push(vo);
+          }
         });
         break;
 
@@ -71,17 +73,19 @@ const VideoSliderItems = ({ item, action }) => {
         response = await tmdbApi.getCredit(category, id, {
           params,
         });
-        response.data.cast.forEach((e) => {
-          let vo = {
-            category: item.category,
-            name: e.title ? e.title : e.name,
-            url: e.poster_path
-              ? apiConfig.w500Image(e.poster_path)
-              : apiConfig.w500Image(e.profile_path),
-            id: e.id,
-          };
-          vo.url = vo.url === null ? noImage : vo.url;
-          arr.push(vo);
+        response.data.cast.forEach((e, i) => {
+          if (i < 20) {
+            let vo = {
+              category: item.category,
+              name: e.title ? e.title : e.name,
+              url: e.poster_path
+                ? apiConfig.w500Image(e.poster_path)
+                : apiConfig.w500Image(e.profile_path),
+              id: e.id,
+            };
+            vo.url = vo.url === null ? noImage : vo.url;
+            arr.push(vo);
+          }
         });
         break;
       default:
@@ -135,7 +139,7 @@ const VideoSliderItems = ({ item, action }) => {
     <div className="videoSlider__items">
       <div className="videoSlider__items__title">
         {item.text}
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', gap: '0.5vw' }}>
           <button onClick={() => sliderAction(slideConfig.left)}>
             <span className="material-symbols-outlined">arrow_back_ios</span>
           </button>

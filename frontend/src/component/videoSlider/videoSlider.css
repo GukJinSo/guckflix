@@ -47,18 +47,16 @@
 }
 
 .videoSlider__items button {
-  cursor: pointer;
-  color: white;
+  min-width: 30px;
+  min-height: 30px;
   background: none;
-  border: 2px solid white;
-  top: 2px;
-  height: 5vh;
+  border: 2px solid #fff;
   border-radius: 8px;
-  padding: 0 1vw;
-  font-family: 'Noto Sans KR';
-  font-weight: 500;
+  color: #fff;
   cursor: pointer;
-  opacity: 1;
+  font-family: Noto Sans KR;
+  font-weight: 500;
+  padding: 0 1vw;
 }
 
 .videoSlider__items .material-symbols-outlined {

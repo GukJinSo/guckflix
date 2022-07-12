@@ -80,8 +80,11 @@
 }
 
 .catalog input {
-  padding: 5px 10px;
   border-radius: 5px;
+  padding: 5px 10px;
+  height: 3vh;
+  width: 50vw;
+  max-width: 250px;
 }
 
 .catalog__loadMore {

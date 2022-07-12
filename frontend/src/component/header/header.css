@@ -22,6 +22,7 @@
   text-align-last: center;
   height: 38px;
   cursor: pointer;
+  padding-left: 5vw;
 }
 .header__logo__img {
   height: inherit;
