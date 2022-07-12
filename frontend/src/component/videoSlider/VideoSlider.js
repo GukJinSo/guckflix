@@ -87,12 +87,13 @@ const VideoSliderItems = ({ item, action }) => {
       default:
         break;
     }
-    setSliderItems(arr);
+    setSliderItems([...arr]);
+    console.log('sliderItems', sliderItems);
   };
 
   useEffect(() => {
-    getList();
     resetSlider();
+    getList();
   }, [id]);
 
   const wrapRef = useRef(null);
@@ -172,11 +173,6 @@ export const VideoCard = ({ data, action }) => {
     transition: '0.5s ease',
   };
 
-  const [img, setImg] = useState(noImage);
-  useEffect(() => {
-    setImg(data.url);
-  }, []);
-
   const navigate = useNavigate();
 
   const handleImageError = (e) => {
@@ -199,7 +195,7 @@ export const VideoCard = ({ data, action }) => {
       }}
     >
       <div className="videoSlider__items__cards__wrap__card__img">
-        <img src={img} onError={handleImageError} alt="" />
+        <img src={data.url} onError={handleImageError} alt="" />
       </div>
       <div className="videoSlider__items__cards__wrap__card__title">
         {data.name}
