@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { VideoCard } from '../../component/videoSlider/VideoSlider';
+import {
+  VideoCard,
+  VideoCardSuspense,
+} from '../../component/videoSlider/VideoSlider';
 import apiConfig from '../../config/apiConfig';
 import tmdbApi, {
   sortingType,
@@ -98,9 +101,9 @@ const Catalog = () => {
       <div className="catalog__videos__wrap">
         <div>
           <div className="catalog__videos">
-            {videos.map((e, i) => {
-              return <VideoCard data={e} key={i} action={action} />;
-            })}
+            {videos.map((e, i) => (
+              <VideoCard data={e} key={i} action={action} />
+            ))}
           </div>
         </div>
       </div>
