@@ -1,5 +1,6 @@
 .header {
   z-index: 100;
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: 0.5fr 2fr;
   align-items: center;
@@ -8,6 +9,7 @@
   opacity: 1;
   height: 100px;
   transition: 0.2s ease;
+  padding: 1vh;
 }
 
 .shrinkHeader {
@@ -31,7 +33,7 @@
   flex-flow: row;
   justify-content: end;
   gap: 10%;
-  padding: 0 5rem;
+  padding-right: 5vw;
   margin: 0;
 }
 

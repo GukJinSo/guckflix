@@ -2,6 +2,7 @@
 let isPressed = true;
 let clientMouseX = 0;
 export const mouseDownAction = (e) => {
+  e.target.style.cursor = 'grabbing';
   isPressed = true;
   clientMouseX = e.clientX;
 };
@@ -31,6 +32,7 @@ export const mouseUpAction = (e) => {
       return;
     }
     heroSlide.style.transform = 'translateX(' + currentIdx * -1 * 100 + 'vw)';
+    e.target.style.cursor = 'grab';
   }
   isPressed = false;
 };

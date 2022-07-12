@@ -134,20 +134,16 @@ const VideoSliderItems = ({ item, action }) => {
     <div className="videoSlider__items">
       <div className="videoSlider__items__title">
         {item.text}
-        <div>
-          <div>
-            <button onClick={() => sliderAction(slideConfig.left)}>
-              <span className="material-symbols-outlined">arrow_back_ios</span>
-            </button>
-            <button onClick={() => sliderAction(slideConfig.right)}>
-              <span className="material-symbols-outlined">
-                arrow_forward_ios
-              </span>
-            </button>
-            <button onClick={() => navigate(`/catalog/${item.category}`)}>
-              더 보기
-            </button>
-          </div>
+        <div style={{ display: 'flex' }}>
+          <button onClick={() => sliderAction(slideConfig.left)}>
+            <span className="material-symbols-outlined">arrow_back_ios</span>
+          </button>
+          <button onClick={() => sliderAction(slideConfig.right)}>
+            <span className="material-symbols-outlined">arrow_forward_ios</span>
+          </button>
+          <button onClick={() => navigate(`/catalog/${item.category}`)}>
+            더 보기
+          </button>
         </div>
       </div>
       <div className="videoSlider__items__buttons"></div>

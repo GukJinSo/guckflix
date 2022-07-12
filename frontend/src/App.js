@@ -15,7 +15,7 @@ function App() {
         <Route path="/catalog/:category" element={<Catalog />}></Route>
         <Route path="/detail/:category/:id" element={<Detail />}></Route>
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
