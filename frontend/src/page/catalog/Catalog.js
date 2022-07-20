@@ -28,37 +28,52 @@ const Catalog = () => {
     let response;
     switch (params.isQuery) {
       case false:
-        response = await tmdbApi.getList(category, sortingType.popular, {
-          params: {
-            page: params.page,
-          },
-        });
+        tmdbApi
+          .getList(category, sortingType.popular, {
+            params: {
+              page: params.page,
+            },
+          })
+          .then((data) => {
+            console.log('data', data);
+            response = data;
+            setPosters();
+          })
+          .catch((err) => console.log(err));
         break;
       case true:
-        response = await tmdbApi.getSearchResult(category, {
-          params: {
-            page: params.page,
-            query: query,
-          },
-        });
-        console.log(response.data.results);
+        tmdbApi
+          .getSearchResult(category, {
+            params: {
+              page: params.page,
+              query: query,
+            },
+          })
+          .then((data) => {
+            response = data;
+            setPosters();
+          })
+          .catch((err) => console.log(err));
         break;
       default:
     }
-    response.data.results.forEach((e) => {
-      let vo = {
-        category: category,
-        name: e.title ? e.title : e.name,
-        url: e.poster_path
-          ? apiConfig.w500Image(e.poster_path)
-          : apiConfig.w500Image(e.profile_path),
-        id: e.id,
-      };
-      vo.url = vo.url === null ? noImage : vo.url;
-      arr.push(vo);
-    });
-    setVideos([...videos, ...arr]);
-    arr = [];
+
+    const setPosters = () => {
+      response.data.results.forEach((e) => {
+        let vo = {
+          category: category,
+          name: e.title ? e.title : e.name,
+          url: e.poster_path
+            ? apiConfig.w500Image(e.poster_path)
+            : apiConfig.w500Image(e.profile_path),
+          id: e.id,
+        };
+        vo.url = vo.url === null ? noImage : vo.url;
+        arr.push(vo);
+      });
+      setVideos([...videos, ...arr]);
+      arr = [];
+    };
   };
 
   useEffect(() => {
@@ -71,14 +86,10 @@ const Catalog = () => {
     getVideo();
   }, [params]);
 
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      setVideos([]);
-      setParams({ ...params, page: 1, isQuery: true });
-    }
-  };
   const changeHandle = (e) => {
     setQuery(e.target.value);
+    setParams({ ...params, page: 1, isQuery: true });
+    setVideos([]);
   };
 
   const action = VideoSliderActionType.catalog;
@@ -92,7 +103,6 @@ const Catalog = () => {
       <div className="catalog__search">
         <input
           value={query}
-          onKeyDown={handleKeyPress}
           onChange={changeHandle}
           type="text"
           placeholder={`${text.search}`}

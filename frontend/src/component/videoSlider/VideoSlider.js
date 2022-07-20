@@ -203,14 +203,14 @@ export const VideoCard = ({ data, action }) => {
     >
       <div className="videoSlider__items__cards__wrap__card__img">
         <img
-          src={loading ? noImage : data.url}
+          src={loading ? data.url : noImage}
           onError={handleImageError}
           alt=""
-          onLoad={() => setLoading(false)}
+          onLoad={() => setLoading(true)}
         />
       </div>
       <div className="videoSlider__items__cards__wrap__card__title">
-        {loading ? '' : data.name}
+        {loading ? data.name : ''}
       </div>
     </div>
   );
